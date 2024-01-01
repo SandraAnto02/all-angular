@@ -1,0 +1,39 @@
+<p>{{empForm.value |json}}</p>
+
+
+<form [formGroup]="empForm" novalidate>
+
+   <div>Employee ID: <input type="text" formControlName="eid" [class.is-invalid]="eid.invalid && eid.touched" >
+    <div *ngIf="eid.touched">
+        <div *ngIf="eid.touched">
+            <div *ngIf="eid.invalid">
+                <small style="color: darkred;" *ngIf="eid.errors?.['required']">Employee ID Cannot Be Empty</small>
+                <small style="color: darkred;" *ngIf="eid.errors?.['pattern']">Employee ID Should Be in the Format SXXX</small>
+                <small style="color: darkred;" *ngIf="eid.errors?.['minLength']">Employee ID should be of length 3 </small>
+
+            </div>
+        </div>
+    </div>
+    </div>        
+    <div>Employee Name:<input type="text" formControlName="ename" [class.is-invalid]="ename.invalid && ename.touched">
+        <div *ngIf="ename.touched">
+            <div *ngIf="ename.invalid">
+                <small style="color: darkred;" *ngIf="ename.errors?.['required']">Please enter your name</small>
+                <small style="color: darkred;" *ngIf="ename.errors?.['pattern']">Invalid name</small>
+            </div>
+        </div>
+    </div> <br><br>
+    
+    <div>Salary:<input type="text" formControlName="salary" [class.is-invalid]="salary.invalid && salary.touched">
+        <div *ngIf="salary.touched">
+            <div *ngIf="salary.invalid">
+                <small style="color: darkred;" *ngIf="salary.errors?.['required']">Please enter your Salary</small>
+                <small style="color: darkred;" *ngIf="salary.errors?.['pattern']">Salary should be in digits</small>
+            </div>
+        </div>
+    </div> <br><br>
+    <p>DEPARTMENT <select name="" id="" formControlName="dept">
+        <option value="default">DEPT</option>
+        <option *ngFor="let dept of depts" value="{{dept}}">{{dept}}</option>
+    </select></p>
+</form>
